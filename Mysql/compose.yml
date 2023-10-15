@@ -1,0 +1,50 @@
+version: '3.1'
+
+services:
+  db:
+    container_name: db1
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_USER: user
+      MYSQL_PASSWORD: example
+      MYSQL_DATABASE: test
+    networks:
+      - mynetwork
+
+  java_app:
+    build: .
+    ports:
+      - "9099:9099"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/test?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=false
+    depends_on:
+      - db
+    container_name: java_app
+    volumes:
+      - ./ProjetFindetude.jar:/app/ProjetFindetude.jar
+    working_dir: /app
+    command: java -jar projetfindetude.jar
+    restart: always
+    networks:
+      - mynetwork
+
+  front_app:
+    container_name: front_app
+    build:
+      context: ../nomdelapp
+      
+    ports:
+      - "8000:3000"
+    depends_on:
+      - db
+    working_dir: /usr/src/app
+    command: serve -s build -l 3000
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:

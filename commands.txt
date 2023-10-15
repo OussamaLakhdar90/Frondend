@@ -1,0 +1,112 @@
+
+1- create application 
+
+npx create-react-app nom de l'application
+
+2- run application
+
+npm start 
+
+
+
+
+-----------------------------------------------------------------------------------------
+react basé sur architecture component 
+
+application dour fi fichier bark index.html
+
+
+bar de navigation  3andik composant 2ismo nav bar 
+
+
+side menu  3andik composant 2ismo side menu 
+
+
+---------------------------->point de depart composant princicpale APP.js
+
+
+
+
+props simple attribue html
+
+
+
+
+add bootstrap to the project 
+
+npm  i  bootstrap
+
+--> nal9ah fi node-modules 
+
+'../node_modules/bootstrap/dist/css/bootstrap.css' t77otha fi index.js
+
+
+
+
+-->bootstrap 
+build fast responsive sites
+il nous offres un ensemble d'element CSS / js code 7adir 
+
+modal = alerte 
+offcanves = jik bi jnab 
+placeholder= fi 3oud chargement en cours 
+popover= ki tickliki 3la button yatala3lik
+spinner = chargement en cours 
+--------------------------------------------------------
+lazem tlinki 3a css 
+w 3a js 
+js link mta3o 
+    <script href="./js/bootstrap.bundle.min.js"></script>
+	
+	apres ki na5ter un component nekrazih bi fichier mta3i mta3 css 
+	
+override fi bootstrap !important 
+
+==============>la taille hedi font-size
+
+
+
+----- Class bootstrap fi div-------
+
+
+Container  { 3andha marge Imin / 2isar
+Container-fluid {3andhech marge 
+
+
+Bootstrap 9asim ecran li 12 colone t7ib ta3tin colone chtar ecran ta3mel <div class=col-6> lazem fi ligne wa7da 12 sinon yemchi li ligne jdida 
+
+<div class=col-sm-6> mana9samlik 2ila matkoun afficheur mta3ek >562  ==> ya7kkiw 3la partie mta3 responsive 
+
+fi mobile <div class=col-4 col-sm-6> <div class=col-4 col-sm-4> <div class=col-4 col-sm-2>
+mb===> margin bottom bich mayabdawich les elements las9in li b3adhom 
+
+
+-------------------------------------------------------------------------------------
+
+add routing to project (navigation) 
+hiya li bich t5alik dour fi applicaiton mta3ek
+
+npm i react-router-dom
+
+----SETUP
+fi index.js 
+
+
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <div>Hello world!</div>,
+  },
+]);
+
+
+
+changi </app>  bi  <RouterProvider router={router} />

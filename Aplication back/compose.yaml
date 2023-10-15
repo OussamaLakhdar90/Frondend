@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+      MYSQL_USER: user
+      MYSQL_PASSWORD: root
+
+  java-app:
+    build:
+      context: .
+    ports:
+      - "9099:9099"
+    extra_hosts:
+      - "dockerhost:${DOCKERHOST}"  # Use the DOCKERHOST environment variable
+    depends_on:
+      - mysql
+    environment:
+      DATABASE_URL: jdbc:mysql://dockerhost:3306/test
+      DATABASE_USER: user
+      DATABASE_PASSWORD: root
+    command: java -jar ProjetFindetude.jar
